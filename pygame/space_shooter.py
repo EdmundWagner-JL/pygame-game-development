@@ -16,8 +16,6 @@ middel = pygame.Rect(400, 0, 10, 600)
 red_health = 100
 yellow_health = 100
 font = pygame.font.SysFont("Calibri", 40, bold=True, italic=False)
-red_health_text = font.render(str(red_health), True, "red")
-yellow_health_text = font.render(str(yellow_health), True, "yellow")
 
 class ship(pygame.sprite.Sprite):
     def __init__(self, x, y, color):
@@ -99,16 +97,30 @@ while run:
     for bullet in Yellow_bullet:
         if red_ship.rect.colliderect(bullet.rect):
             bullet.kill()
-            #red health to be reduced.
+            red_health -= 10
     for bullet in Red_bullet:
         if yellow_ship.rect.colliderect(bullet.rect):
             bullet.kill()
-            #yellow health to be reduced
+            yellow_health -= 10
+    
+    red_health_text = font.render(str(red_health), True, "red")
+    yellow_health_text = font.render(str(yellow_health), True, "yellow")
+    screen.blit(red_health_text, (20, 20))
+    screen.blit(yellow_health_text, (710, 20))
+    
     key = pygame.key.get_pressed()
     red_ship.movement(key)
     yellow_ship.movement(key)
     Yellow_bullet.update()
     Red_bullet.update()
-    screen.blit(red_health_text, (20, 20))
-    screen.blit(yellow_health_text, (710, 20))
+    if red_health <= 0 or yellow_health <= 0:
+        if red_health <= 0:
+            text = font.render("YELLOW WINS!", True, "yellow")
+        else:
+            text = font.render("RED WINS!", True, "red")
+
+        screen.blit(text, (200, 250))
+        pygame.display.update()
+        pygame.time.delay(2000)
+        run = False
     pygame.display.update()
