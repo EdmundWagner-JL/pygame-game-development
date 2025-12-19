@@ -1,5 +1,6 @@
 import pygame
 from random import randint, choice
+
 pygame.init()
 
 WIDTH = 800
@@ -19,6 +20,8 @@ White_Gem = pygame.transform.scale(White_Gem, (40, 50))
 Blue_Gem = pygame.image.load("images\Blue_gem.png")
 Blue_Gem = pygame.transform.scale(Blue_Gem, (40, 50))
 images = [Red_Gem, Blue_Gem, White_Gem]
+score = 0
+font = pygame.font.SysFont("Arial", 30, bold=False, italic=True)
 class Pirate(pygame.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__()
@@ -53,6 +56,11 @@ while run:
             pirate.rect.center = pos
     screen.fill("sky blue")
     screen.blit(white, (0, 0))
+    score_text = font.render(str(score), True, (66, 38, 38))
+    item_list = pygame.sprite.spritecollide(pirate, Gem_group, True)
+    for item in item_list:
+        score += 1
     Pirate_group.draw(screen)
     Gem_group.draw(screen)
+    screen.blit(score_text, (50, 50))
     pygame.display.update()
