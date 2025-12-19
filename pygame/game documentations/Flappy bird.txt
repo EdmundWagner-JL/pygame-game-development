@@ -1,0 +1,38 @@
+Flappy Bird – Game Documentation
+
+
+Story
+
+You control a small bird trying to fly as far as possible through dangerous pipes. The bird must stay in the air and avoid crashing into obstacles. You can get high scores aswell.
+
+ PC / NPC
+
+Player Character (PC)
+ A small flying bird
+ Moves forward automatically
+ Player controls when the bird jumps
+
+Non-Player Characters (NPCs)
+ Pipes (main obstacles)
+ Ground and ceiling (death zones)
+
+Goals
+ Stay alive as long as possible
+ Fly through gaps between pipes
+ Earn the highest score
+
+ Feedback
+ Score increases when passing pipes
+ Sound effects when jumping, scoring, or crashing
+ Visual effects when hitting an obstacle
+ Game Over screen showing score and best score
+
+Challenging and Not Boring
+ Increasing speed over time
+ Smaller gaps between pipes
+ Multiple levels with different themes
+ Reward system:
+   
+   Coins for passing pipes
+   Unlockable bird skins
+   Achievements for high scores
